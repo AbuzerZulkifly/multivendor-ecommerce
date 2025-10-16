@@ -14,15 +14,24 @@ const intitalState = {
 
 const Signup = () => {
 
+
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const onSubmit = (e) => {
     e.preventDefault();
-     console.log('onSubmit fired', formData)
-    dispatch(signupUser(formData)).then((data) => {
-        console.log('signup result', data)
-      
-      if(data?.payload?.success) navigate('/auth/login')    
+    
+     dispatch(signupUser(formData)).then((data) => {          
+     console.log(data);
+     
+        if(data?.payload?.success)
+        { 
+          navigate('/auth/login')
+          toast.success(data?.payload?.message)
+        } 
+        
+        else {
+          toast.error(data?.payload?.message)
+        }
     }
   )
   }

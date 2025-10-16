@@ -50,3 +50,35 @@ export const loginFormControl = [
   },
 
 ]
+
+
+
+import {LuLayoutDashboard, LuShoppingCart, LuGift, LuHandHelping} from 'react-icons/lu'
+
+export const adminSideMenuItems = [
+  {
+    id: "1",
+    icon: LuLayoutDashboard,
+    title: "Home",
+    path: "dashboard"
+  },
+  
+  {
+    id: "2",
+    icon: LuShoppingCart,
+    title: "Orders",
+    path: "orders"
+  },
+  {
+    id: "3",
+    icon: LuGift,
+    title: "Products",
+    path: "products"
+  },
+  {
+    id: "4",
+    icon: LuHandHelping,
+    title: "Features",
+    path: "features"
+  },
+]

@@ -1,5 +1,6 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Route, Routes } from 'react-router-dom'
+import { Toaster } from 'react-hot-toast'
 // AUTH RELATED PAGES
 import AuthLayout from './components/auth/AuthLayout.jsx'
 import Login from './pages/auth/Login.jsx'
@@ -19,16 +20,22 @@ import ShoppinHome  from './pages/shoppingArea/ShoppinHome.jsx'
 import ShoppingCheckout from './pages/shoppingArea/ShoppingCheckout.jsx'
 import ShoppingAccount from './pages/shoppingArea/ShoppingAccount.jsx'
 
+import CheckAuth from './components/common/CheckAuth.jsx'
 import NotFound from './pages/NotFound.jsx'
 import NoAccess from './pages/NoAccess.jsx'
-import CheckAuth from './components/common/CheckAuth.jsx'
+import Loading from './components/common/Loading.jsx'
+import { checkUserAuth } from './store/authSlice.js'
+import { useDispatch, useSelector } from 'react-redux'
 
 function App() {
+  const {user, isAuthenticated, isLoading} = useSelector(state => state.auth)
+  const dispatch = useDispatch();
 
+  useEffect(()=> {
+    dispatch(checkUserAuth())
+  }, [dispatch]);
 
-  const isAuthenticated = false
-  const userInfo = null
-
+  if(isLoading) return <><Loading /></>
   return (
 <div className='flex flex-col overflow-hidden'>
     
@@ -36,7 +43,7 @@ function App() {
       <Route path="/auth" element={
         <CheckAuth
           isAuthenticated={isAuthenticated}
-          userInfo={userInfo}
+          user={user}
         >
           <AuthLayout shopName="DoorStep Shop" />
         </CheckAuth>
@@ -48,7 +55,7 @@ function App() {
       <Route path="/admin" element={
         <CheckAuth
           isAuthenticated={isAuthenticated}
-          userInfo={userInfo}
+          user={user}
         >
           <AdminAreaLayout />
         </CheckAuth>
@@ -62,7 +69,7 @@ function App() {
       <Route path="/shop" element={
         <CheckAuth
           isAuthenticated={isAuthenticated}
-          userInfo={userInfo}
+          user={user}
         >
           <ShoppingAreaLayout />
         </CheckAuth>
@@ -77,7 +84,18 @@ function App() {
     <Route path="noaccess" element={<NoAccess />} />
     
     </Routes>
-
+    <Toaster 
+      toastOptions={{
+        className: '',
+        style: {
+          border: '1px solid #713200',
+          padding: '10px',
+          fontSize: '13px',
+          color: '#fff',
+          backgroundColor: '#713200',
+        },
+      }}
+    />
 </div>
   )
 }

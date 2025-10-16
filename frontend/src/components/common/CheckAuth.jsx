@@ -1,7 +1,7 @@
 import React from "react";
 import { Navigate, useLocation } from "react-router-dom";
 
-const CheckAuth = ({ isAuthenticated, userInfo, children }) => {
+const CheckAuth = ({ isAuthenticated, user, children }) => {
   const currentPageLocation = useLocation();
 
   if (!isAuthenticated && !(
@@ -14,14 +14,14 @@ const CheckAuth = ({ isAuthenticated, userInfo, children }) => {
 
   if (isAuthenticated && (currentPageLocation.pathname.includes("auth"))) 
       {
-        if(userInfo?.role === "admin") {
+        if(user?.role === "admin") {
           return <Navigate to='/admin/dashboard' />
         } 
         else{
           return <Navigate to='/shop/home' />
         }
       }
-  if(isAuthenticated && userInfo?.role !== "admin" && currentPageLocation.pathname.includes('admin')) {
+  if(isAuthenticated && user?.role !== "admin" && currentPageLocation.pathname.includes('admin')) {
     return <Navigate to='/noaccess' />
   }
 

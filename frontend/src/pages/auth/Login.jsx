@@ -1,7 +1,11 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { loginFormControl } from '@/config/index.js'
 import Form from '@/components/common/Form.jsx'
+import { loginUser } from '@/store/authSlice.js'
+import { useDispatch } from 'react-redux'
+import toast from 'react-hot-toast'
+
 
 const intitalValue = {
   email: "",
@@ -12,8 +16,24 @@ const Login = () => {
 
   const [formData, setFormData] = useState(intitalValue)
 
-  const onSubmit = () => {
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+  const onSubmit = (e) => {
+    e.preventDefault();
+    
+     dispatch(loginUser(formData)).then((data) => {          
+        console.log(data);
+        
+        if (data?.payload?.success){
+          toast.success(data?.payload?.message)
+        }
 
+        
+        else {
+          toast.error(data?.payload?.message)
+        }
+    }
+  )
   }
 
   return (
@@ -21,6 +41,7 @@ const Login = () => {
          <div className="text-center">
            <h1 className='text-2xl md:text-4xl font-semibold text-green-500 md:mb-8 mb-4'>Login</h1>
          </div>
+         <div>
          <Form 
            formControl={loginFormControl}
            buttonText={"Start Shopping"}
@@ -28,6 +49,7 @@ const Login = () => {
            setFormData={setFormData}
            onSubmit={onSubmit}
          />
+        </div>
            <p className='text-center'>
              Dont have an account? <a href="/auth/signup" className='text-blue-500 '>Create One Here</a>
            </p>

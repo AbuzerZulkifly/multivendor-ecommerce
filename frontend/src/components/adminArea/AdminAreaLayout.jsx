@@ -1,16 +1,18 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Outlet } from 'react-router-dom'
 import AdminHeaderPanel from './AdminHeaderPanel.jsx'
 import AdminSideMenu from './AdminSideMenu.jsx'
 
 const AdminAreaLayout = () => {
+
+  const [openSideBar, setOpenSideBar] = useState(false)
   return (
     <div className='flex min-h-screen w-full'>
       {/* Sidemenu */}
-      <AdminSideMenu />
+      <AdminSideMenu  open={openSideBar} setOpen={setOpenSideBar} />
       <div className="flex flex-1 flex-col">
         {/* admin Header */}
-        <AdminHeaderPanel />
+        <AdminHeaderPanel setOpen={setOpenSideBar}/>
         <main className='flex-1 flex bg-muted/40 p-4 md:p-6'>
           <Outlet />
         </main>
