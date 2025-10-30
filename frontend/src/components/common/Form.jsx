@@ -17,7 +17,7 @@ const Form = ({formControl, formData, setFormData, onSubmit, buttonText}) => {
   return (
     <form onSubmit={onSubmit} className='flex flex-col gap-6'>
       {formControl.map((items)=> (
-        <div className='flex flex-col gap-5' key={items.name}>
+        <div className='flex flex-col gap-3' key={items.name}>
           <Label>
             {items.label}
           </Label>
@@ -42,6 +42,7 @@ const Form = ({formControl, formData, setFormData, onSubmit, buttonText}) => {
               className='absolute right-1.5 top-2'
               >
               {showPassword ? (
+                
                 <FaRegEye 
                 color='green'                
                   size={22}
@@ -61,9 +62,12 @@ const Form = ({formControl, formData, setFormData, onSubmit, buttonText}) => {
 
           </>
           )
-        }{
-        items.componentType === "Input" && items.type !== "password" && (
+        }
+        {
+        items.componentType === "Input" && items.type !== "password"   && (
+          <div className='flex'>
             <Input
+              autoCapitalize = {items.capitalise}
               type={items.type}
               name={items.name}
               placeholder={items.placeholder}
@@ -73,9 +77,26 @@ const Form = ({formControl, formData, setFormData, onSubmit, buttonText}) => {
                 ...formData,
                 [items.name]: e.target.value
               })}
-            />  
+            /> 
+            </div> 
         )}
-          
+          {
+            items.componentType === "select" && (
+           <div className='flex flex-row'>{
+              <Input
+                    type={items.type}
+                    name={items.name}
+                    placeholder={items.placeholder}
+                    required={items.required}
+                    value={formData[items.name] || ""}
+                    onChange={(e) => setFormData({
+                      ...formData,
+                      [items.name]: e.target.value
+                      })}
+            />}
+              </div>
+            )
+          }
           
           {
           items.componentType === "Textarea" &&(
@@ -93,6 +114,7 @@ const Form = ({formControl, formData, setFormData, onSubmit, buttonText}) => {
           )
           }
           {items.componentType === "Select" &&(
+            <div className='flex flex-row'>
             <Select
               onValueChange={(value) => setFormData({
                 ...formData,
@@ -116,6 +138,7 @@ const Form = ({formControl, formData, setFormData, onSubmit, buttonText}) => {
                 }
               </SelectContent>
             </Select>
+            </div>
           )
           }
         </div>

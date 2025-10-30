@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link, Outlet } from 'react-router-dom'
+import Login from '@/pages/auth/Login.jsx'
 const AuthLayout = ({shopName}) => {
   return (
     <div className='w-full min-h-screen flex flex-col items-center justify-center'>

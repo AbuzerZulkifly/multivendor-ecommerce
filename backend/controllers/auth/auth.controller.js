@@ -72,7 +72,7 @@ const login = async(req, res) => {
       id: ifUserExists._id,
       role: ifUserExists.role,
       email: ifUserExists.email
-    }, "process.env.JWT_SECRET", {expiresIn: '1d'})
+    }, "process.env.JWT_SECRET", {expiresIn: '6d'})
     
     res.cookie('token', token, {httpOnly: true, secure: false}).json({
       success: true,
