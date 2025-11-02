@@ -24,8 +24,8 @@ export const getAllProduct = createAsyncThunk('/products/getallproduct',
 })
 
 
-export const updateProduct = createAsyncThunk('/products/updateproduct', async({id, formData}) => {
-  const response = await axios.put(API_PATHS.ADMIN.PRODUCTS.UPDATE`/${id}`, formData, {
+export const updateProduct = createAsyncThunk('/products/updateproduct', async({id, formData, image}) => {
+  const response = await axios.put(API_PATHS.ADMIN.PRODUCTS.UPDATE(id), formData, image, {
     headers: {
       "Content-Type": "application/json"
     }
@@ -35,7 +35,7 @@ export const updateProduct = createAsyncThunk('/products/updateproduct', async({
 
 
 export const deleteProduct = createAsyncThunk('/products/deleteproduct', async(id) => {
-  const response = await axios.delete(API_PATHS.ADMIN.PRODUCTS.DELETE`/${id}`)
+  const response = await axios.delete(API_PATHS.ADMIN.PRODUCTS.DELETE(id))
   return response?.data
 })
 

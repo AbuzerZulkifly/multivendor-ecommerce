@@ -137,7 +137,7 @@ const AddProduct = ({
                       </SelectTrigger>
                       <SelectContent>
                         {brands && brands.length > 0 && brands.map((setBrands) =>(
-                            <SelectItem key={setBrands._id} value={setBrands._id}>
+                            <SelectItem key={setBrands._id} value={setBrands.name}>
                               {setBrands.name}   
                             </SelectItem>
                         ))}

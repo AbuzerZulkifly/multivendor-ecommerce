@@ -97,8 +97,8 @@ export const addNewProductFormElements = [
     label: "Keywords to Search Your Product",
     name: "keyword",
     placeholder: "Enter some necessary keywords",
-    type: "text",
-    componentType: "Input",
+    type: "",
+    componentType: "Textarea",
     required: true
   },
   

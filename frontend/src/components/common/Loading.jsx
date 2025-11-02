@@ -2,9 +2,9 @@ import React from 'react'
 
 const Loading = () => {
   return (
-    <div className=' min-h-screen bg-green-300 flex flex-col gap-5 justify-center items-center'>
+    <div className=' min-h-screen bg-green-300 flex flex-col gap-5 justify-center items-center px-1'>
       <span className='loader'></span>
-      <p className='text-xl text-red-500 font-semibold'>Please Check Your Internet Connection</p>
+      <p className='md:text-xl xxsm:text-sm text-red-500 font-semibold'>Loading Please Wait!</p>
     </div>
   )
 }

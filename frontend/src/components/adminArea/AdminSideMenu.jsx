@@ -53,12 +53,12 @@ const AdminSideMenu = ({ open, setOpen}) => {
       <div className="lg:hidden">
           <Sheet open={open} onOpenChange={setOpen} >
             <SheetContent side='left' className={`w-64`}>
-              <div className="flex flex-col h-full bg-blue-200">
-                <SheetHeader className={" bg-green-300"}>
+              <div className="flex flex-col h-full bg-blue-100">
+                <SheetHeader className={" bg-black"}>
                   <SheetTitle>
                     <div className="flex text-center cursor-pointer gap-10 text-xl items-center font-semibold">
                     <ChartNoAxesCombinedIcon/>
-                    <h1>Admin Panel</h1>
+                    <h1 className='text-white'>Admin Panel</h1>
                     </div>
                   </SheetTitle>
                 </SheetHeader>
@@ -69,10 +69,9 @@ const AdminSideMenu = ({ open, setOpen}) => {
             </SheetContent>
           </Sheet>
         </div>
-      <aside className=' w-54 sticky top-[64px] hidden lg:block'>
-        <div onClick={()=> navigate('/admin/dashboard')} className="flex px-6 py-5.5 cursor-pointer bg-green-300 items-center gap-3 text-xl font-semibold">
-          <ChartNoAxesCombinedIcon size={28}/>
-          <h1>Admin Panel</h1>
+      <aside className=' w-54 bg-gray-300 sticky top-[64px] hidden lg:block'>
+        <div onClick={()=> navigate('/admin/dashboard')} className="flex px-6 py-5.5 cursor-pointer justify-center  gap-3 text-xl md:text-2xl font-semibold">
+          <h1 className=''>Admin Panel</h1>
         </div>
       <div className='mt-10 px-6'>
         <SideMenuItems />

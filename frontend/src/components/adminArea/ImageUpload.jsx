@@ -67,7 +67,7 @@ const ImageUpload = ({imageFile, setImageFile, uploadedImageUrl, setUploadedImag
           
            <div className='flex flex-col items-center relative'>
             <div className=''>
-            <img src={src}
+            <img src={src || uploadedImageUrl || "https://share.google/images/DJ4mBvWiIVTiaNxd9" }
             
             width={width} height={height} alt="" />
             </div>

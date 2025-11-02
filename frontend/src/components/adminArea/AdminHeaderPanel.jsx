@@ -4,7 +4,7 @@ import { LucideMenu, LucideLogOut } from 'lucide-react'
 
 const AdminHeaderPanel = ({setOpen}) => {
   return (
-    <header className='flex items-center bg-blue-200 justify-between xxsm:py-4.5 xxsm:px-3 md:px-5 md:py-6'>
+    <header className='flex items-center bg-gray-300 justify-between xxsm:py-4.5 xxsm:px-3 md:px-5 md:py-6'>
       <button onClick={()=> setOpen(true)} className="lg:hidden xxsm:block">
         <LucideMenu />
         <span className="sr-only">Toggle Menu</span>

@@ -78,6 +78,27 @@ const handleAddNewProduct = async(req,res) => {
       discount_price,
       stock,
       minimum_purchase} = req.body
+
+      if(image[0] === undefined){
+        return res.status(400).json({
+          success: false,
+          message: "Please upload the 1st image"
+        })
+      }
+
+      if(discount_price >= price){
+        return res.status(400).json({
+          success: false,
+          message: "Discount price must be less than the original price"
+        })
+      }
+
+      if(price <= 0){
+        return res.status(400).json({
+          success: false,
+          message: "Price must be greater than zero"
+        })
+      }
     
     const addNewProduct = new Product({
       image ,
@@ -128,7 +149,7 @@ const handleEditProduct = async(req,res) => {
     const {id} = req.params
         
     const {
-      image,
+      image = [] ,
       title,
       description,
       keyword,
@@ -145,9 +166,12 @@ const handleEditProduct = async(req,res) => {
         message: "Product Cannot Be Found",
         success: false
       })
-      
+    if (image && image.length > 0) {
+      findProduct.image = image;
+      }
+
+      findProduct.image[1] = image[1] || findProduct.image[1]
       findProduct.title = title || findProduct.title
-      findProduct.image = image || findProduct.image
       findProduct.keyword = keyword || findProduct.keyword
       findProduct.description = description || findProduct.description
       findProduct.category = category || findProduct.category

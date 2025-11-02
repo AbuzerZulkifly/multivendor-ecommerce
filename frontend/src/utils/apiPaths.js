@@ -20,9 +20,9 @@ ADMIN: {
     PRODUCTS: {
       ADD: `${BASE_URL}/api/admin/products/addproduct`,
       GET: `${BASE_URL}/api/admin/products/getallproduct`,
-      UPDATE: `${BASE_URL}/api/admin/products/updateproduct`,
+      UPDATE: (id) => `${BASE_URL}/api/admin/products/updateproduct/${id}`,
       ADD: `${BASE_URL}/api/admin/products/addproduct`,
-      DELETE: `${BASE_URL}/api/admin/products/deleteproduct`,
+      DELETE: (id) => `${BASE_URL}/api/admin/products/deleteproduct/${id}`,
         }
 }
 }

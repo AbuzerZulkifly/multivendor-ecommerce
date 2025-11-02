@@ -2,7 +2,7 @@ import React from 'react'
 import { LuX  } from 'react-icons/lu';
 import { cn } from '@/lib/utils.js';
 
-const CreateModal = ({ children, isOpen, onClose, title }) => {
+const CreateModal = ({ children, isOpen, onClose, title, formData }) => {
   if(!isOpen) return null
   return (
     <div
@@ -19,6 +19,8 @@ const CreateModal = ({ children, isOpen, onClose, title }) => {
             className="text-xl text-gray-500 rounded-xl px-2.5 hover:bg-gray-300 "
             type="button"
             onClick={onClose}
+            
+
           >
             <LuX />
           </button>
