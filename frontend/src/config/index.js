@@ -53,6 +53,7 @@ export const loginFormControl = [
 
 
 
+import { Label } from '@radix-ui/react-label'
 import {LuLayoutDashboard, LuShoppingCart, LuGift, LuHandHelping} from 'react-icons/lu'
 
 export const adminSideMenuItems = [
@@ -202,13 +203,88 @@ export const addNewBrandElements = [
   }
 ]
 
-export const addNewCategoryElements = [
-  {
-    label: "Enter Category Name",
-    name: "category",
-    placeholder: "Enter the category name",
-    type: "text",
-    componentType: "Input",
+// export const addNewCategoryElements = [
+//   {
+//     label: "Enter Category Name",
+//     name: "category",
+//     placeholder: "Enter the category name",
+//     type: "text",
+//     componentType: "Input",
 
-  }
+//   }
+// ]
+
+export const shoppingFilterItems = [
+    {
+    label: "Category",
+    name: "category",
+    placeholder: "Select Category",
+    options: [
+      {id:"men", label: "For Mens"},
+      {id:"women", label: "For Womens"},
+      {id:"kids", label: "For Kids"},
+      {id:"sports&outdoor", label: "Sports and Outdoor"},
+      {id:"health&beauty", label: "Health and Beauty"},
+      {id:"electronic", label: "Electronic Devices"},
+      {id:"accessories", label: "Electronic Accessories"},
+      {id:"groceries&pets", label: "Groceries and Pets"},
+      {id:"vehicle", label: "Vehicle"},
+      {id:"home&garden", label: "Home and Garden"},
+    ]    
+  },
+    {
+    label: "Brand",
+    name: "brand",
+    placeholder: "Select Brand",
+    type: "",
+    componentType: "Select",
+    required: true,
+    options: []
+    },
+    {
+      label: "Rating",
+      name: "rating",
+      placeholder: "Select Rating",
+      type: "",
+      componentType: "Select",
+      options: [
+        {id: "high", label: "Highest to Lowest Stars"},
+        {id: "low", label: "Lowest to Highest Stars"},
+      ]
+    },
+    {
+      label: "Selling",
+      name: "selling",
+      placeholder: "Select Selling",
+      type: "",
+      componentType: "Select",
+      options: [
+        {id: "high", label: "Best Selling"},
+        {id: "low", label: "Least Selling"},
+      ],
+    },
+
+    {
+      label: "Price",
+      name: "price",
+      placeholder: "Select Price",
+      type: "", 
+      componentType: "Select",
+      options: [
+        {id: "high", label: "High to Low"},
+        {id: "low", label: "Low to High"},
+      ],
+    },
+
+    {
+      label: "Condition",
+      name: "condition",
+      placeholder: "Select Condition",
+      type: "",
+      componentType: "Select",
+      options: [
+        {id: "new", label: "Brand New"},
+        {id: "used", label: "Used"},
+      ]
+    }
 ]

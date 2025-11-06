@@ -3,6 +3,7 @@ const BASE_URL = "http://localhost:5000"
 export const API_PATHS = {
   AUTH: {
     LOGIN: `${BASE_URL}/api/auth/login`,
+    LOGOUT: `${BASE_URL}/api/auth/logout`,
     SIGNUP: `${BASE_URL}/api/auth/signup`,
     CHECKAUTH: `${BASE_URL}/api/auth/authorised`
   },

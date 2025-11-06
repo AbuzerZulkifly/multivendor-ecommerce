@@ -89,7 +89,7 @@ const AddProduct = ({
         </div>
         <hr />
         {/* Grid Input */}
-                <div className="flex md:flex-row xxsm:flex-col md:justify-between gap-3">
+        <div className="flex md:flex-row xxsm:flex-col md:justify-between gap-3">
           {formControl.map((items) => (
             <>
               {items.componentType === "Select" && (

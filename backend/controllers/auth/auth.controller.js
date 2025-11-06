@@ -71,6 +71,7 @@ const login = async(req, res) => {
     const token = jwt.sign({
       id: ifUserExists._id,
       role: ifUserExists.role,
+      username: ifUserExists.username,
       email: ifUserExists.email
     }, "process.env.JWT_SECRET", {expiresIn: '6d'})
     
