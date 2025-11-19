@@ -132,6 +132,9 @@
 #root{
   @apply bg-blue-200
 }
+body {
+  @apply transition-all duration-300
+}
 
 .loader {
     width: 48px;
@@ -158,5 +161,9 @@
     }
 
     .product-card-image {
-      @apply min-w-full max-w-full aspect-square 
+      @apply min-w-full max-w-full aspect-square rounded-lg
+    }
+
+    hr {
+      @apply border-black
     }

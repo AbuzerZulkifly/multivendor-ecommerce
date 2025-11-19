@@ -11,12 +11,12 @@ import {
 import { cn } from '@/lib/utils.js'
 import { LucideEdit, LucideTrash, LucideTrash2 } from 'lucide-react'
 
-const ProductCard = ({product, setFormData, setOpenAddProductModal, setCurrentEditedId, setUploadedImageUrl, setImages, handleDeleteProduct
+const AdminProductCard = ({product, setFormData, setOpenAddProductModal, setCurrentEditedId, setUploadedImageUrl, setImages, handleDeleteProduct
 }) => {
   return (
     <Card className={cn
       ('p-2 hover:scale-[1.03] hover:outline-8 hover:border-blue-400 transition-all duration-300',
-        `${product?.stock < 1 ? "bg-red-300 border-0" : ""}`
+        `${product?.stock <= 10 ? "bg-red-300 border-0" : ""}`
       )
     }>
       <div className='flex flex-col justify-center capitalize'>
@@ -74,7 +74,9 @@ const ProductCard = ({product, setFormData, setOpenAddProductModal, setCurrentEd
 
           </div>
         <div className='flex justify-center items-center mb-2'>
-          <span className='font-semibold text-xl'>{product?.brand}</span>
+          <span className='font-semibold text-xl'>
+            {product?.stock <= 5 ? `${product?.brand} (Low Stock)`  : product?.brand  }
+          </span>
         </div>
         <img
         className='product-card-image mb-3'
@@ -92,8 +94,8 @@ const ProductCard = ({product, setFormData, setOpenAddProductModal, setCurrentEd
               <span>
                   {
                 product?.discount_price ?  (
-                <p className='text-gray-500 flex gap-2 items-center'>
-                  (<span className='line-through'>{product?.discount_price}</span>
+                <p className='text-gray-500 flex items-center'>
+                  (<span className='line-through pe-1'>{product?.discount_price}</span>
                   <span>{(product?.discount_price / product?.price * 100).toFixed(2)}% Off</span>)                
                 </p>
               ) : (<span className='text-gray-500'>No Discount</span>)
@@ -120,4 +122,4 @@ const ProductCard = ({product, setFormData, setOpenAddProductModal, setCurrentEd
   )
 }
 
-export default ProductCard
+export default AdminProductCard

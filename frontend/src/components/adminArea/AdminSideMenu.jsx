@@ -69,7 +69,7 @@ const AdminSideMenu = ({ open, setOpen}) => {
             </SheetContent>
           </Sheet>
         </div>
-      <aside className=' w-54 bg-gray-300 sticky top-[64px] hidden lg:block'>
+      <aside className=' w-46 bg-gray-300 sticky top-[64px] hidden lg:block'>
         <div onClick={()=> navigate('/admin/dashboard')} className="flex px-6 py-5.5 cursor-pointer justify-center  gap-3 text-xl md:text-2xl font-semibold">
           <h1 className=''>Admin Panel</h1>
         </div>

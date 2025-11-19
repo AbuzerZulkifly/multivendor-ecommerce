@@ -113,7 +113,7 @@ const AddProduct = ({
                       <SelectContent>
                         {items.options && items.options.length > 0
                           ? items.options.map((option) => (
-                              <SelectItem key={option.id} value={option.id}>
+                              <SelectItem key={option.id} value={option.label}>
                                 {option.label}
                               </SelectItem>
                             ))
@@ -176,7 +176,10 @@ const AddProduct = ({
             </>
           ))}
         </div>
-        
+        <hr color="black" className="" />
+        <div>
+          <h1 className="text-center">Other Specifications</h1>
+        </div>
       </div>
 
       <div></div>

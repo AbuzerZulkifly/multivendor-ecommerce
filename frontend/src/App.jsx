@@ -45,7 +45,7 @@ function App() {
           isAuthenticated={isAuthenticated}
           user={user}
         >
-          <AuthLayout shopName="DoorStep Shop" />
+          <AuthLayout shopName="DoorStep" />
         </CheckAuth>
       }>
         <Route path="login" element={<Login />} />
@@ -58,7 +58,7 @@ function App() {
           isAuthenticated={isAuthenticated}
           user={user}
         >
-          <AuthLayout shopName="DoorStep Shop" />
+          <AuthLayout shopName="DoorStep" />
         </CheckAuth>
       }>
         <Route path="login" element={<Login />} />

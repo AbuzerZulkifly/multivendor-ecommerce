@@ -129,6 +129,8 @@ export const addNewProductFormElements = [
       {id:"groceries&pets", label: "Groceries and Pets"},
       {id:"vehicle", label: "Vehicle"},
       {id:"home&garden", label: "Home and Garden"},
+      {id:"education", label: "Education & Stationery"},
+      {id:"food&beverages", label: "Food & Beverages"},
     ]
 
     
@@ -215,10 +217,9 @@ export const addNewBrandElements = [
 // ]
 
 export const shoppingFilterItems = [
-    {
-    label: "Category",
-    name: "category",
-    placeholder: "Select Category",
+    
+   {
+    label : "Category", 
     options: [
       {id:"men", label: "For Mens"},
       {id:"women", label: "For Womens"},
@@ -230,61 +231,49 @@ export const shoppingFilterItems = [
       {id:"groceries&pets", label: "Groceries and Pets"},
       {id:"vehicle", label: "Vehicle"},
       {id:"home&garden", label: "Home and Garden"},
-    ]    
-  },
+      {id:"food&beverages", label: "Food & Beverages"},
+    ]}    
+  ,
+    
     {
-    label: "Brand",
-    name: "brand",
-    placeholder: "Select Brand",
-    type: "",
-    componentType: "Select",
-    required: true,
-    options: []
+      label: "Brand",
+      options: []
     },
-    {
-      label: "Rating",
-      name: "rating",
-      placeholder: "Select Rating",
-      type: "",
-      componentType: "Select",
-      options: [
-        {id: "high", label: "Highest to Lowest Stars"},
-        {id: "low", label: "Lowest to Highest Stars"},
-      ]
-    },
-    {
-      label: "Selling",
-      name: "selling",
-      placeholder: "Select Selling",
-      type: "",
-      componentType: "Select",
-      options: [
-        {id: "high", label: "Best Selling"},
-        {id: "low", label: "Least Selling"},
-      ],
-    },
-
-    {
-      label: "Price",
-      name: "price",
-      placeholder: "Select Price",
-      type: "", 
-      componentType: "Select",
-      options: [
-        {id: "high", label: "High to Low"},
-        {id: "low", label: "Low to High"},
-      ],
-    },
-
+    
     {
       label: "Condition",
-      name: "condition",
-      placeholder: "Select Condition",
-      type: "",
-      componentType: "Select",
       options: [
         {id: "new", label: "Brand New"},
         {id: "used", label: "Used"},
       ]
     }
+    
 ]
+
+export const shoppingSortOptions = [
+  {
+      label: "Ratings",
+      options: [
+        {id: "rating_high", label: "Highest to Lowest Stars"},
+        {id: "rating_low", label: "Lowest to Highest Stars"},
+      ]
+    },
+    {
+      label: "Selling",
+      options: [
+        {id: "selling_high", label: "Best Selling"},
+        {id: "selling_low", label: "Least Selling"},
+      ],
+    },
+
+    {
+      label: "Price",
+      options: [
+       {id: "price_high", label: "Expenseive to Cheap"},
+       {id: "price_low", label: "Cheap to Expensive"},
+      ],
+    },
+
+]
+ 
+

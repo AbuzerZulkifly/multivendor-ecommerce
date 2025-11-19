@@ -25,5 +25,10 @@ ADMIN: {
       ADD: `${BASE_URL}/api/admin/products/addproduct`,
       DELETE: (id) => `${BASE_URL}/api/admin/products/deleteproduct/${id}`,
         }
+},
+
+SHOPPING_PRODUCT_LISTING: {
+  GET: `${BASE_URL}/api/shopping/getallfilteredproduct`
 }
+
 }

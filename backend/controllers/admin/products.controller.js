@@ -99,6 +99,13 @@ const handleAddNewProduct = async(req,res) => {
           message: "Price must be greater than zero"
         })
       }
+      
+      if(discount_price < 0){
+        return res.status(400).json({
+          success: false,
+          message: "Discount Price must be greater than or equal zero"
+        })
+      }
     
     const addNewProduct = new Product({
       image ,
@@ -166,9 +173,30 @@ const handleEditProduct = async(req,res) => {
         message: "Product Cannot Be Found",
         success: false
       })
-    if (image && image.length > 0) {
-      findProduct.image = image;
-      }
+
+      const newPrice = price || findProduct.price
+      const newDiscountPrice = discount_price || findProduct.discount_price
+
+      if(title === "" || description === "" || keyword === "" || category === "" || brand === "" || condition === "" ){
+      return res.status(400).json({
+        message: "Please Fill in All the Fields",
+        success: false,
+      })
+    }
+
+    if (newDiscountPrice >= price){
+      return res.status(400).json({
+        message: "Discount price must be less than the original price",
+        success: false,
+      })
+    }
+    
+    if (newDiscountPrice < 0 || newPrice <= 0){
+      return res.status(400).json({
+        message: "Discount Price Must Be Greater Than or Equal to 0 and Price Must Be Greater Than 0",
+        success: false
+      })
+    }
 
       findProduct.image[1] = image[1] || findProduct.image[1]
       findProduct.title = title || findProduct.title
@@ -178,7 +206,7 @@ const handleEditProduct = async(req,res) => {
       findProduct.brand = brand || findProduct.brand
       findProduct.condition = condition || findProduct.condition
       findProduct.price = price || findProduct.price
-      findProduct.discount_price = discount_price || findProduct.discount_price
+      findProduct.discount_price = discount_price || 0
       findProduct.stock = stock || findProduct.stock
       findProduct.minimum_purchase = minimum_purchase || findProduct.minimum_purchase
 

@@ -10,7 +10,7 @@ import axios from 'axios'
 import { API_PATHS } from '@/utils/apiPaths.js'
 import { useDispatch, useSelector } from 'react-redux'
 import { addNewProduct, getAllProduct, addNewBrand, getAllBrand, updateProduct, deleteProduct } from '@/store/admin/index.js'
-import ProductCard from '@/components/adminArea/ProductCard.jsx'
+import AdminProductCard from '@/components/adminArea/AdminProductCard.jsx'
 
 const intitalProductFormData = {
   image: { img1: null, img2: null, img3: null, img4: null },
@@ -20,9 +20,9 @@ const intitalProductFormData = {
   brand: '',
   category: '',
   condition: '',
-  price: '',
-  discount_price: '',
-  stock: '',
+  price: '0',
+  discount_price: '0',
+  stock: '0',
   minimum_purchase: '',
 }
 
@@ -46,7 +46,7 @@ const AdminProduct = () => {
 
     const [imageLoadingState, setImageLoadingState] = useState(false)
 
-    const {productList} = useSelector(state=>state.adminProduct)
+    const {productList, isLoading} = useSelector(state=>state.adminProduct)
     
     const dispatch = useDispatch()
     
@@ -79,6 +79,15 @@ const AdminProduct = () => {
           }
         
         currentEditedId ? dispatch(updateProduct(editPayload)).then((data)=> {
+
+          if(formData.discount_price >= formData.price) {
+            toast.error("Your Discount Price Must Be Less Than The Original Price")
+          }
+          
+          if(formData.discount_price < 0) {
+            toast.error("Your Discount Price Must Be More Than or Equal to 0")
+          }
+
           if(data?.payload?.success){
             dispatch(getAllProduct())
             setImages({img1: null, img2: null, img3 :null, img4 :null, img5 :null,})
@@ -102,6 +111,11 @@ const AdminProduct = () => {
 
         if (formData.price <= 0) {
         toast.error("Price must be greater than zero")
+        return
+        }
+
+        if (formData.discount_price < 0) {
+        toast.error("Discount Price must be greater than zero or equal to 0")
         return
         }
           if(data?.payload?.success){
@@ -237,12 +251,19 @@ const handleDeleteProduct = (getCurrentProductId) => {
           </CreateModal>
         </div>
         </div>
+      {  
+        isLoading ? 
+        <div className='flex gap-3 min-h-screen justify-center items-center'>
+          <span className='loader'></span>
+          <span>Please Wait...</span>
+        </div> 
+        :     
         <div>
         {
           productList && productList.length > 0 ? (
-            <div className='mt-10 grid xsm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5'>
+            <div className='mt-10 grid xsm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-5'>
               {productList.map((product)=> (
-                <ProductCard
+                <AdminProductCard
                   setFormData={setFormData}
                   setOpenAddProductModal={setOpenAddProductModal}
                   setCurrentEditedId={setCurrentEditedId}
@@ -252,13 +273,14 @@ const handleDeleteProduct = (getCurrentProductId) => {
                   handleDeleteProduct={handleDeleteProduct}
                   
                  />
-              ))}   
+              ))
+              }   
             </div>
           ) : (
             <h1 className='text-center mt-20 text-2xl'>No Products Added Yet</h1>
           )
         }
-        </div>
+        </div>}
         </div>
     </Fragment>
   )

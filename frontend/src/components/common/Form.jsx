@@ -38,7 +38,7 @@ const Form = ({formControl, formData, setFormData, onSubmit, buttonText}) => {
                 [items.name]: e.target.value
               })}
             />
-              <button
+              <span
               className='absolute right-1.5 top-2'
               >
               {showPassword ? (
@@ -56,7 +56,7 @@ const Form = ({formControl, formData, setFormData, onSubmit, buttonText}) => {
                  onClick={()=> togglePasswordVisibility()}
                 />
               )}
-            </button>          
+            </span>          
         <p className='text-blue-500 mt-1 text-right'><a href="">Forgot Password?</a></p>
           </div>
 
